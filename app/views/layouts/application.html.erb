@@ -12,6 +12,7 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <%= link_to "首頁", root_path %>
     <% if user_signed_in? %>
       <li><%= link_to "一般使用者登出", destroy_user_session_path, method: "delete"%></li>
     <% else %>

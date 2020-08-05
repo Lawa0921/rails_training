@@ -1,1 +1,9 @@
 <h1>首頁</h1>
+<% @goods.each do |good| %>
+  <div>
+    品名：<%= good.name %>
+    編號：<%= good.sku %>
+    原價：<s><%= good.price %></s>
+    特價：<%= (good.price * good.discount).to_i %>
+  </div>
+<% end %>
