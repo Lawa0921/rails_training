@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_05_033534) do
+ActiveRecord::Schema.define(version: 2020_08_05_043550) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,27 @@ ActiveRecord::Schema.define(version: 2020_08_05_033534) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "goods", force: :cascade do |t|
+    t.boolean "public"
+    t.integer "status"
+    t.integer "price"
+    t.decimal "discount"
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "skus", force: :cascade do |t|
+    t.string "number", null: false
+    t.string "color"
+    t.string "size"
+    t.integer "good_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["good_id"], name: "index_skus_on_good_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,4 +57,5 @@ ActiveRecord::Schema.define(version: 2020_08_05_033534) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "skus", "goods"
 end

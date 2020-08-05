@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  public: false
+  status: 1
+  price: 1
+  discount: 9.99
+  name: MyString
+  desc: MyText
+
+two:
+  public: false
+  status: 1
+  price: 1
+  discount: 9.99
+  name: MyString
+  desc: MyText
