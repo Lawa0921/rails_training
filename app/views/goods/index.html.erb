@@ -3,5 +3,6 @@
 <div>
   <%= link_to "#{good.name}", good_path(good) %>
   <%= link_to "編輯", edit_good_path(good) %>
+  <%= link_to "刪除", good_path(good), data: {method: "DELETE", confirm: "確定要刪除嗎？"} %>
 </div>
 <% end %>

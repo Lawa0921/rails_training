@@ -1,5 +1,5 @@
 class GoodsController < ApplicationController
-  before_action :set_good, only: [:edit, :update, :show]
+  before_action :set_good, only: [:edit, :update, :show, :destroy]
   before_action :authenticate_admin!
 
   def index
@@ -33,6 +33,15 @@ class GoodsController < ApplicationController
       flash[:notice] = "更新商品失敗"
       render :edit
     end
+  end
+
+  def destroy
+    if @good.destroy
+      flash[:notice] = "成功刪除商品"
+    else
+      flash[:notice] = "刪除商品失敗"
+    end
+    redirect_to goods_path
   end
 
   private
