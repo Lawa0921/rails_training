@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_05_072104) do
+ActiveRecord::Schema.define(version: 2020_08_05_104233) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -49,21 +49,15 @@ ActiveRecord::Schema.define(version: 2020_08_05_072104) do
     t.boolean "public"
     t.integer "status"
     t.integer "price"
-    t.decimal "discount"
+    t.decimal "discount", default: "1.0"
     t.string "name"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "skus", force: :cascade do |t|
-    t.string "number", null: false
-    t.string "color"
-    t.string "size"
-    t.integer "good_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["good_id"], name: "index_skus_on_good_id"
+    t.string "number"
+    t.integer "size"
+    t.integer "color"
+    t.integer "inventory", default: 0
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,5 +73,4 @@ ActiveRecord::Schema.define(version: 2020_08_05_072104) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "skus", "goods"
 end

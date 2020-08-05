@@ -1,15 +1,19 @@
 <h1>單個商品</h1>
-<%= @good.name %>
-<%= @good.description %>
-<%= @good.price %>
-<%= @good.discount %>
-<%= @good.public %>
-<%= @good.status %>
+品名：<%= @good.name %>
+描述：<%= @good.description %>
+單價：<%= @good.price %>
+折扣比率：<%= @good.discount %>
+是否公開：<%= @good.public %>
+商品狀態：<%= @good.status %>
 <% if @good.photos.attached?%>
   <% @good.photos.each do |photo|%>
     <%= image_tag photo.variant(resize_to_limit: [200, 200])%>
     <%= link_to "刪除圖片", remove_photo_good_path(photo_id: photo), data: {method: "DELETE", confirm: "確定要刪除圖片嗎？"} %>
   <% end %>
 <% end %>
+商品編號：<%= @good.number %>
+顏色：<%= @good.color %>
+尺寸：<%= @good.size %>
+存貨：<%= @good.inventory %>
 
 <%= link_to "回到商品列表", goods_path %>
