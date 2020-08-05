@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_08_05_043550) do
     t.integer "price"
     t.decimal "discount"
     t.string "name"
-    t.text "desc"
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

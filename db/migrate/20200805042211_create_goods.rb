@@ -6,7 +6,7 @@ class CreateGoods < ActiveRecord::Migration[6.0]
       t.integer :price
       t.decimal :discount
       t.string :name
-      t.text :desc
+      t.text :description
 
       t.timestamps
     end

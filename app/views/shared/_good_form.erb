@@ -1,0 +1,43 @@
+<%= form_for @good do |f| %>
+  <% if @good.errors.any? %>
+    <ul>
+      <% @good.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, t("courses.name")%>
+    <%= f.text_field :name, class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :price%>
+    <%= f.number_field :price, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :discount %>
+    <%= f.number_field :discount, class: "form-control", step: :any %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :status %> 
+    <%= f.select :status, Good.statuses.keys.map{|status| [status, status] } %>
+  </div>
+
+  <div class="form-group col-12">
+    <%= f.label :public %>
+    <%= f.check_box :public %>
+  </div>
+
+  <div>
+    <%= f.submit "送出"%>
+  </div>
+<% end %>

@@ -20,6 +20,7 @@
     <% end %>
     <% if admin_signed_in? %>
       <%= link_to "所有商品", goods_path %>
+      <%= link_to "新增商品", new_good_path %>
     <% end %>
     <%= yield %>
   </body>
