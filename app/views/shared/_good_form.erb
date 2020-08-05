@@ -29,12 +29,22 @@
 
   <div class="form-group">
     <%= f.label :status %> 
-    <%= f.select :status, Good.statuses.keys.map{|status| [status, status] } %>
+    <%= f.select :status, Good.statuses.keys %>
   </div>
 
   <div class="form-group col-12">
     <%= f.label :public %>
     <%= f.check_box :public %>
+  </div>
+
+  <div class="field form-group">
+    <% if @good.photos.attached? %>
+      <% @good.photos.each do |photo|%>
+        <%= image_tag photo.variant(resize_to_limit: [200, 200])%>
+      <% end %>
+    <% end %>
+      <%= f.file_field :photos, multiple: true %>
+    </div>
   </div>
 
   <div>

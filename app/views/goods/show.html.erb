@@ -5,5 +5,10 @@
 <%= @good.discount %>
 <%= @good.public %>
 <%= @good.status %>
+<% if @good.photos.attached?%>
+  <% @good.photos.each do |photo|%>
+    <%= image_tag photo.variant(resize_to_limit: [200, 200])%>
+  <% end %>
+<% end %>
 
 <%= link_to "回到商品列表", goods_path %>
