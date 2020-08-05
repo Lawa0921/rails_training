@@ -12,11 +12,14 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <% if current_user %>
+    <% if user_signed_in? %>
       <li><%= link_to "一般使用者登出", destroy_user_session_path, method: "delete"%></li>
     <% else %>
       <li><%= link_to "一般使用者註冊", new_user_registration_path %></li>
       <li><%= link_to "一般使用者登入", new_user_session_path %></li>
+    <% end %>
+    <% if admin_signed_in? %>
+      <%= link_to "所有商品", goods_path %>
     <% end %>
     <%= yield %>
   </body>
