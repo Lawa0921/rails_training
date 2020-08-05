@@ -1,5 +1,5 @@
 class GoodsController < ApplicationController
-  before_action :set_good, only: [:edit, :update, :show, :destroy]
+  before_action :set_good, only: [:edit, :update, :show, :destroy, :remove_photo]
   before_action :authenticate_admin!
 
   def index
@@ -42,6 +42,13 @@ class GoodsController < ApplicationController
       flash[:notice] = "刪除商品失敗"
     end
     redirect_to goods_path
+  end
+
+  def remove_photo
+    @good.photos.each do |photo|
+      photo.purge if photo.id == params[:photo_id].to_i
+    end
+    redirect_to good_path(@good), notice: "已成功刪除圖片"
   end
 
   private
