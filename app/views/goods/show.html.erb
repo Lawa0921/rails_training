@@ -11,5 +11,8 @@
     <%= link_to "刪除圖片", remove_photo_good_path(photo_id: photo), data: {method: "DELETE", confirm: "確定要刪除圖片嗎？"} %>
   <% end %>
 <% end %>
+<%= @good.number %>
+<%= @good.color %>
+<%= @good.size %>
 
 <%= link_to "回到商品列表", goods_path %>
